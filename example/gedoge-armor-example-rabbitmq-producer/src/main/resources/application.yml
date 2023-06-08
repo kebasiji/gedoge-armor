@@ -1,0 +1,59 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    url: jdbc:sqlserver://192.168.77.106:1433;DatabaseName=master;encrypt=false
+    username: SA
+    password: Chsr-@6w3tiqbJvmtevY
+    hikari:
+      connection-timeout: 2000
+      idle-timeout: 600000
+      max-lifetime: 1800000
+      maximum-pool-size: 5
+      connection-init-sql: select 1
+      connection-test-query: select 1
+      validation-timeout: 1000
+  jpa:
+    open-in-view: false
+    properties:
+      hibernate:
+        globally_quoted_identifiers: true
+  rabbitmq:
+    host: 192.168.77.106
+    port: 5672
+    username: guest
+    password: guest
+    virtual-host: /
+    publisher-confirm-type: CORRELATED
+    template:
+      mandatory: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+mybatis:
+  mapper-locations: classpath*:mapper/*Mapper.xml
+  configuration:
+    map-underscore-to-camel-case: true
+    default-fetch-size: 100
+    default-statement-timeout: 30
+logging:
+  file:
+    path: logs/gedoge-armor-example-rabbitmq-producer/
+gedoge:
+  armor:
+    enabled: true
+    store:
+      type: JDBC
+      jdbc:
+        driver: MSSQL
+        outbound-schema: outbound_event
+        inbound-schema: inbound_event
+    outbound:
+      processor: SCHEDULER
+      scheduler:
+        start-delay: 5000
+        repeat-interval: 5000

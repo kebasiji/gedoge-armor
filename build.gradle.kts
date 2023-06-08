@@ -3,9 +3,12 @@ plugins {
     id("io.spring.dependency-management") version "1.0.15.RELEASE" apply false
     kotlin("jvm") version "1.6.21" apply false
     kotlin("plugin.spring") version "1.6.21" apply false
+    id("org.jetbrains.kotlin.plugin.jpa") version "1.6.20" apply false
 }
 
 group = "com.gedoge.armor"
+
+extra["mybatisSpringBootStarterVersion"] = "2.3.1"
 
 subprojects {
 

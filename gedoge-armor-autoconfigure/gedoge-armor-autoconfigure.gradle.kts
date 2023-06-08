@@ -23,6 +23,7 @@ configure<io.spring.gradle.dependencymanagement.dsl.DependencyManagementExtensio
 dependencies {
     compileOnly("org.jetbrains.kotlin:kotlin-reflect")
     compileOnly("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+    compileOnly("org.springframework.boot:spring-boot-autoconfigure")
     compileOnly("org.springframework:spring-context")
     compileOnly("org.springframework:spring-context-support")
     compileOnly("org.springframework:spring-jdbc")
@@ -32,6 +33,8 @@ dependencies {
     compileOnly("com.fasterxml.jackson.module:jackson-module-parameter-names")
     compileOnly("org.slf4j:slf4j-api")
     compileOnly("org.quartz-scheduler:quartz")
+    compileOnly(project(":gedoge-armor-core"))
+    annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 
