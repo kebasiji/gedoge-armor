@@ -76,6 +76,7 @@
     <logger name="org.quartz" level="INFO"/>
     <logger name="com.zaxxer.hikari" level="INFO"/>
     <logger name="org.hibernate.validator" level="INFO"/>
+    <logger name="org.hibernate.engine.transaction.internal.TransactionImpl" level="INFO"/>
     <logger name="io.lettuce.core" level="INFO"/>
     <logger name="io.netty.util" level="INFO"/>
 

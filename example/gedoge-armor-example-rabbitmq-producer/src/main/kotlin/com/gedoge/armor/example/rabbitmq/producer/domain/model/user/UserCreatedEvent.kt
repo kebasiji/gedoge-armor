@@ -6,7 +6,7 @@ import com.gedoge.armor.example.rabbitmq.producer.infrastructure.configuration.c
 import com.gedoge.armor.example.rabbitmq.producer.infrastructure.configuration.constants.EXCHANGE_ARMOR_EXAMPLE_USER
 
 @Outbound(type = EVENT_TYPE_USER_CREATED, destination = EXCHANGE_ARMOR_EXAMPLE_USER, tag = "created")
-class UserCreatedEvent(private val user: User) : DomainEvent(user) {
+data class UserCreatedEvent(private val user: User) : DomainEvent(user) {
     override val sourceId: String
         get() = user.id.toString()
 

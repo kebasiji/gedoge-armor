@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PutMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
+import java.util.UUID
 import javax.annotation.Resource
 
 @RestController
@@ -18,13 +19,13 @@ class UserController {
     private lateinit var userApplicationService: UserApplicationService
 
     @PostMapping
-    fun addUser(@RequestBody addAC: AddUserAC) {
-        userApplicationService.addUser(addAC.name)
+    fun addUser() {
+        userApplicationService.addUser(UUID.randomUUID().toString())
     }
 
     @PutMapping("{userId}")
-    fun updateUser(@PathVariable("userId") userId: Long, @RequestBody updateAC: UpdateUserAC) {
-        userApplicationService.updateUser(userId, updateAC.name)
+    fun updateUser(@PathVariable("userId") userId: Long) {
+        userApplicationService.updateUser(userId, UUID.randomUUID().toString())
     }
 
     @GetMapping("/{userId}")

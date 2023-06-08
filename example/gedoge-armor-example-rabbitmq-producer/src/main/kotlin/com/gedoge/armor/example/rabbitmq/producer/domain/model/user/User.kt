@@ -2,13 +2,13 @@ package com.gedoge.armor.example.rabbitmq.producer.domain.model.user
 
 import com.fasterxml.jackson.annotation.JsonIgnore
 import com.gedoge.armor.core.domain.DomainEventPublisher
+import com.gedoge.armor.example.rabbitmq.producer.infrastructure.persistence.repository.EntityTimeInitializeListener
 import com.gedoge.armor.example.rabbitmq.producer.utils.SingletonContext
-import org.hibernate.annotations.CreationTimestamp
 import org.hibernate.annotations.GenericGenerator
-import org.hibernate.annotations.UpdateTimestamp
 import java.time.LocalDateTime
 import javax.persistence.*
 
+@EntityListeners(EntityTimeInitializeListener::class)
 @Table(name = "user")
 @Entity
 class User(
@@ -29,18 +29,21 @@ class User(
     var name: String = name
         protected set
 
-    @field:CreationTimestamp
-    @field:Column(name = "created_at", updatable = false)
+    @Column(name = "created_at", updatable = false)
     var createdAt: LocalDateTime? = null
         protected set
 
-    @field:UpdateTimestamp
-    @field:Column(name = "updated_at")
+    @Column(name = "updated_at")
     var updatedAt: LocalDateTime? = null
         protected set
 
     fun changeName(newName: String) {
         this.name = newName
+        renewUpdateTime()
+    }
+
+    private fun renewUpdateTime() {
+        updatedAt = LocalDateTime.now()
     }
 
     @get:JsonIgnore
