@@ -5,7 +5,7 @@ plugins {
     id("io.spring.dependency-management")
     kotlin("jvm")
     kotlin("plugin.spring")
-    id("org.jetbrains.kotlin.plugin.jpa")
+    kotlin("plugin.jpa")
 }
 
 java.sourceCompatibility = JavaVersion.VERSION_11
