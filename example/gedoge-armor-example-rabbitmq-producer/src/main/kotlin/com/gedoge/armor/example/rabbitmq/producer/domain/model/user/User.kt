@@ -2,13 +2,13 @@ package com.gedoge.armor.example.rabbitmq.producer.domain.model.user
 
 import com.fasterxml.jackson.annotation.JsonIgnore
 import com.gedoge.armor.core.domain.DomainEventPublisher
-import com.gedoge.armor.example.rabbitmq.producer.infrastructure.persistence.repository.EntityTimeInitializeListener
+import com.gedoge.armor.example.rabbitmq.producer.infrastructure.persistence.repository.EntityTimeInitializationListener
 import com.gedoge.armor.example.rabbitmq.producer.utils.SingletonContext
 import org.hibernate.annotations.GenericGenerator
 import java.time.LocalDateTime
 import javax.persistence.*
 
-@EntityListeners(EntityTimeInitializeListener::class)
+@EntityListeners(EntityTimeInitializationListener::class)
 @Table(name = "user")
 @Entity
 class User(

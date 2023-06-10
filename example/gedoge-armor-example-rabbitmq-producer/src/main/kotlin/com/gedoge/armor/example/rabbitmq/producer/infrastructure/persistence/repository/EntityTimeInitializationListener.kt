@@ -6,10 +6,10 @@ import kotlin.reflect.KMutableProperty
 import kotlin.reflect.full.memberProperties
 import kotlin.reflect.jvm.isAccessible
 
-class EntityTimeInitializeListener {
+class EntityTimeInitializationListener {
 
     @PrePersist
-    fun setCreationTime(entity: Any) {
+    fun initialize(entity: Any) {
         val now = LocalDateTime.now()
         val createdAt = entity::class.memberProperties.find { it.name == "createdAt" }
         if (createdAt is KMutableProperty<*>) {
