@@ -9,9 +9,9 @@ import javax.persistence.PersistenceContext
 
 @Transactional
 @Repository
-class JpaUserRepository : UserRepository {
-    @PersistenceContext
-    private lateinit var em: EntityManager
+class JpaUserRepository(
+    @PersistenceContext private val em: EntityManager
+) : UserRepository {
 
     override fun save(user: User) {
         em.persist(user)

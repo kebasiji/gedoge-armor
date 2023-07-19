@@ -74,6 +74,8 @@ publishing {
             pom {
                 name.set("${project.group}:${project.name}")
                 description.set("armor core module")
+                url.set("https://github.com/kebasiji/gedoge-armor")
+                packaging = "jar"
                 licenses {
                     license {
                         name.set("The Apache License, Version 2.0")

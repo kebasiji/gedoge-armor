@@ -1,4 +1,4 @@
-package com.gedoge.armor.example.rabbitmq.producer.infrastructure.persistence.repository
+package com.gedoge.armor.example.rabbitmq.producer.infrastructure.persistence.jpa
 
 import java.time.LocalDateTime
 import javax.persistence.PrePersist

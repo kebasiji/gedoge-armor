@@ -2,7 +2,7 @@ package com.gedoge.armor.example.rabbitmq.producer.domain.model.user
 
 import com.fasterxml.jackson.annotation.JsonIgnore
 import com.gedoge.armor.core.domain.DomainEventPublisher
-import com.gedoge.armor.example.rabbitmq.producer.infrastructure.persistence.repository.EntityTimeInitializationListener
+import com.gedoge.armor.example.rabbitmq.producer.infrastructure.persistence.jpa.EntityTimeInitializationListener
 import com.gedoge.armor.example.rabbitmq.producer.utils.SingletonContext
 import org.hibernate.annotations.GenericGenerator
 import java.time.LocalDateTime
@@ -17,7 +17,7 @@ class User(
 
     @GenericGenerator(
         name = "entity_id",
-        strategy = "com.gedoge.armor.example.rabbitmq.producer.infrastructure.persistence.repository.EntityIdGenerator"
+        strategy = "com.gedoge.armor.example.rabbitmq.producer.infrastructure.persistence.jpa.EntityIdGenerator"
     )
     @GeneratedValue(generator = "entity_id")
     @Id
